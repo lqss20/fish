@@ -69,14 +69,14 @@ export default class Loading extends cc.Component {
 
             CfgData.fishCfg = assets.getContent(resArr[0]);
             CfgData.decoCfg = assets.getContent(resArr[1]);
-            let arr = CfgData.decoCfg.decos;
-            let len = arr.length;
-            let obj = {};
-            for(let i=0;i<len;i++)
-            {
-                obj[arr[i].mid]=arr[i];
-            }
-            console.log(JSON.stringify(obj));
+            // let arr = CfgData.decoCfg.decos;
+            // let len = arr.length;
+            // let obj = {};
+            // for(let i=0;i<len;i++)
+            // {
+            //     obj[arr[i].mid]=arr[i];
+            // }
+            // console.log(JSON.stringify(obj));
             this.loaded = true;
             // this.EnterGame(null);
         });

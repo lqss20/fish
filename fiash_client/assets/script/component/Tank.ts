@@ -34,10 +34,8 @@ export default class NewClass extends TankData {
     touchNode: cc.Node = null;
     
 
-    /**鱼 */
-    fishs:any;
-    decos:any;
-
+    private fishMap:any;
+    private decoMap:any;
     /** */
 
     // LIFE-CYCLE CALLBACKS:
@@ -50,6 +48,10 @@ export default class NewClass extends TankData {
     protected refreshByData()
     {
         super.refreshByData();
+
+        this.fishMap = {};
+        this.decoMap = {};
+
         let td = this._data
         let ds = td.decos;
         for(let key in ds)
@@ -72,7 +74,10 @@ export default class NewClass extends TankData {
         // {
             e.stopPropagation();
             console.log("点击了:",e.getDelta(),e.getLocation());
-            
+            for(let key in this.fishMap)
+            {
+                this.fishMap[key].eatFood(e.getLocation());
+            }
            
         // }
         
@@ -94,15 +99,10 @@ export default class NewClass extends TankData {
                     self.fishNode.addChild(fishSprite);
                     fishSprite.setPosition(cc.v2(0,0));
                     fishSprite.on(cc.Node.EventType.TOUCH_START,self.onClickFish,this);
-                    let selfCom:SteeredVehicle;
-                    selfCom = fishSprite.getComponent(SteeredVehicle);
-                    if(selfCom)
-                    {
-                        selfCom.position = new Vector2D(0,0);
-                        cc.log(fishSprite.getPosition());
-                    }
                     let fmovice = fishSprite.getComponent(FishMovice);
                     fmovice.setData(data);
+
+                    self.fishMap[data.mid]= fmovice;
                     
         });
     }

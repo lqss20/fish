@@ -29,8 +29,20 @@ export default class FishData extends ComponentData
     *"sell":true    卖
      * cfgData----
      * 
+     * hungry   饿
+     * stage    阶段
+     * production   产量基数
+     * 
+     * ftime    上次喂食时间
+     * dtime    上次掉落
+     * 
+     * dstep    掉落间隔
+     * fstep    饿间隔
     */
-
+    public get data()
+    {
+        return this._data;
+    }
     protected setCfgData()
     {
         this._cfgData = CfgData.getFishCfg(this._data.mid);
@@ -38,6 +50,21 @@ export default class FishData extends ComponentData
     protected refreshByData()
     {
         super.refreshByData();
+    }
+    
+    protected updateState()
+    {
+        
+    }
+    protected isHungry()
+    {
+        if(new Date().getTime() - this._data.ftime >this._data.fstep)
+            return true;
+    }
+    protected dropGold()
+    {
+        if(new Date().getTime() - this._data.ftime >this._data.dstep)
+            return true;
     }
    
 }

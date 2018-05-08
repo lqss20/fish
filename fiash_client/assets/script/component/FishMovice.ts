@@ -229,4 +229,16 @@ export default class FishMovice extends FishData {
         this.calculateSpeed(tpos);
         this.randomFrameRate(16);
     }
+
+    lateUpdate()
+    {
+        if(this.isHungry())
+        {
+
+        }
+        if(this.dropGold())
+        {
+
+        }
+    }
 }

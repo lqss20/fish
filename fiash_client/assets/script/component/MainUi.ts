@@ -50,7 +50,7 @@ export default class NewClass extends cc.Component {
         //初始化lefUI;
         this.nameLabel.string = pd.name;
         this.goldLabel.string = pd.gold;
-        this.moneyLabel.string = pd.pearl;
+        this.moneyLabel.string = pd.money;
 
         //右侧菜单加事件
         this.btnFood.on(cc.Node.EventType.TOUCH_START,this.onClickFood,this);
